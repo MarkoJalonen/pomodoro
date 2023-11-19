@@ -1,0 +1,7 @@
+.vscode
+Makefile
+*.stash
+.o
+moc*
+*.core
+*~ core

@@ -1,2 +1,2 @@
 # Pomodoro
-A repo for c++ / qt demo
+A repo for a c/c++ and qt demo
