@@ -3,14 +3,14 @@
 
 MainWidget::MainWidget(QWidget *parent) : QWidget(parent)
 {
-    button_ = new QPushButton(tr("Push Me!"));
-    textBrowser_ = new QTextBrowser();
+    button_ = new QPushButton(tr("Add widget"));
 
-    QGridLayout *mainLayout = new QGridLayout;
-    mainLayout->addWidget(button_,0,0);
-    mainLayout->addWidget(textBrowser_,1,0);
-    setLayout(mainLayout);
-    setWindowTitle(tr("Buttons connected to processes"));
+    mainLayout_ = new QGridLayout;
+    mainLayout_->addWidget(button_,0,0);
+    setLayout(mainLayout_);
+    setWindowTitle(tr("Dynamic Layouts"));
+
+    textEditCount = 0;
 
     // Connect signals to member function pointers
     connect 
@@ -18,35 +18,18 @@ MainWidget::MainWidget(QWidget *parent) : QWidget(parent)
         button_, SIGNAL(released()), 
         this, SLOT(onButtonReleased())
     );
-    connect
-    (
-        &process_, SIGNAL(readyReadStandardOutput()),
-        this, SLOT(onCaptureProcessOutput()) 
-    );
 }
 
 MainWidget::~MainWidget()
 {
     delete button_;
-    delete textBrowser_;
+    // delete all textEdits
 }
 
 void MainWidget::onButtonReleased()
 {
-    textBrowser_->clear();
-    textBrowser_->append(tr("Running command:"));
-
-    // Set process output stream and command
-    process_.setCurrentWriteChannel(QProcess::StandardOutput);
-    process_.setProgram("ls");
-    process_.setArguments({"-alh", "/home/marko/Documents/studies"});
-    process_.start();
-}
-
-void MainWidget::onCaptureProcessOutput()
-{
-    // Check that the signal sender object was a process pointer
-    // AKA if the cast returns a NULL or not
-    QProcess* process = qobject_cast<QProcess*>(sender());
-    if(process) textBrowser_->append(process->readAllStandardOutput());
+    if(textEditCount >= 9) return;
+    textEditList_[textEditCount] = new QTextEdit();
+    mainLayout_->addWidget(textEditList_[textEditCount],textEditCount+1,0);
+    textEditCount++;
 }

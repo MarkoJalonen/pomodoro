@@ -2,10 +2,10 @@
 #define MAINWIDGET_H
 
 #include <QWidget>
-#include <QProcess> // QProcess on stack, not pointer
 
 class QPushButton;
-class QTextBrowser;
+class QTextEdit;
+class QGridLayout;
 
 class MainWidget : public QWidget
 {
@@ -17,12 +17,12 @@ class MainWidget : public QWidget
 
     private slots: // Q_SLOTS macro
         void onButtonReleased();
-        void onCaptureProcessOutput();
 
     private:
-        QPushButton* button_;
-        QTextBrowser* textBrowser_;
-        QProcess process_; // Terminal
+        QPushButton *button_;
+        QGridLayout *mainLayout_;
+        QTextEdit *textEditList_[10];
+        int textEditCount;
 };
 
 #endif
