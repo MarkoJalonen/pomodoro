@@ -5,3 +5,5 @@ Makefile
 moc*
 *.core
 *~ core
+todo.txt
+
