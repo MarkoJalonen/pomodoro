@@ -8,7 +8,6 @@
 class QPushButton;
 class QTextEdit;
 class QGridLayout;
-class QHBoxLayout;
 
 class MainWidget : public QWidget
 {
@@ -25,7 +24,6 @@ class MainWidget : public QWidget
     private:
         QPushButton *button_;
         QGridLayout *mainLayout_;
-        QHBoxLayout *taskList_[10];
         int taskListCount_;
 };
 

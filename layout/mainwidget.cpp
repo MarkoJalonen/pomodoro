@@ -1,4 +1,5 @@
 #include <QtWidgets>
+#include <stdio.h>
 #include "mainwidget.h"
 
 MainWidget::MainWidget(QWidget *parent) : QWidget(parent)
@@ -30,32 +31,47 @@ MainWidget::~MainWidget()
 void MainWidget::addTask()
 {
     if(taskListCount_ >= 9) return;
-    
 
-    QHBoxLayout *task = new QHBoxLayout();
+    QHBoxLayout *taskLayout = new QHBoxLayout();
+    QWidget *taskWidget = new QWidget();
     QTextEdit *text = new QTextEdit();
     QPushButton *button = new QPushButton(tr("X"));
-    task->addWidget(text);
-    task->addWidget(button);
 
-    taskList_[taskListCount_] = task;
-    mainLayout_->addLayout(taskList_[taskListCount_],taskListCount_+1,0);
+    connect 
+    (
+        button, SIGNAL(released()), 
+        this, SLOT(removeTask())
+    );
+
+    taskLayout->addWidget(text);
+    taskLayout->addWidget(button);
+    taskWidget->setLayout(taskLayout);
+    taskWidget->setMaximumHeight(50);
+    
+    mainLayout_->addWidget(taskWidget,taskListCount_+1,0);
     taskListCount_++;
 }
 
 void MainWidget::removeTask()
 {
-    QObject *obj = sender();
-    QPushButton *button = qobject_cast<QPushButton *>(obj);
-    if(button != NULL)
-    {
-        QHBoxLayout *parent = qobject_cast<QHBoxLayout *>(obj->parent());
-        QLayoutItem *child;
-        while(NULL != (child = parent->takeAt(0)))
+    QPushButton *button = qobject_cast<QPushButton *>(sender());
+    if(button)
+    {       
+        QWidget *parent = qobject_cast<QWidget *>(button->parent());
+        if(parent)
         {
-            delete child;
+            parent->deleteLater();
+            taskListCount_--;   
+            mainLayout_->update();
+            
+        } 
+        else
+        {
+            printf("button parent not QWidget\n");
         }
-        parent->deleteLater();
     }
-
+    else 
+    {
+        printf("button null\n");
+    }
 }
