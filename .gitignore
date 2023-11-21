@@ -1,9 +1,10 @@
 .vscode
 Makefile
 *.stash
-.o
+*.o
 moc*
 *.core
 *~ core
 todo.txt
+layout
 
