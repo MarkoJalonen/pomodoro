@@ -35,7 +35,7 @@ void MainWidget::addTask()
     QHBoxLayout *taskLayout = new QHBoxLayout();
     QWidget *taskWidget = new QWidget();
     QTextEdit *text = new QTextEdit();
-    QPushButton *button = new QPushButton(tr("X"));
+    QPushButton *button = new QPushButton(tr("❌"));
 
     connect 
     (
@@ -55,23 +55,10 @@ void MainWidget::addTask()
 void MainWidget::removeTask()
 {
     QPushButton *button = qobject_cast<QPushButton *>(sender());
-    if(button)
-    {       
-        QWidget *parent = qobject_cast<QWidget *>(button->parent());
-        if(parent)
-        {
-            parent->deleteLater();
-            taskListCount_--;   
-            mainLayout_->update();
-            
-        } 
-        else
-        {
-            printf("button parent not QWidget\n");
-        }
-    }
-    else 
+    QWidget *parent = qobject_cast<QWidget *>(button->parent());
+    if(button && parent)
     {
-        printf("button null\n");
-    }
+        parent->deleteLater();
+        taskListCount_--;   
+    }           
 }
