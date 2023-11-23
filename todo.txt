@@ -1,4 +1,0 @@
-dynaaminen widget lisääminen
-listan elementit näkyviin, niiden lisäys?
-qt manual programming without cmake
-linked list?
