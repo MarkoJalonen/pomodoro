@@ -4,5 +4,5 @@ INCLUDEPATH += .
 
 QT += widgets
 
-HEADERS += mainwidget.h
-SOURCES += main.cpp mainwidget.cpp
+HEADERS += mainwidget.h taskwidget.h
+SOURCES += main.cpp mainwidget.cpp taskwidget.cpp

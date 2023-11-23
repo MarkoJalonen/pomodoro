@@ -4,9 +4,9 @@
 #include <QWidget>
 
 #define MIN_WIDTH 400
+#define MAX_TASK_COUNT 10
 
 class QPushButton;
-class QTextEdit;
 class QGridLayout;
 
 class MainWidget : public QWidget
@@ -19,12 +19,10 @@ class MainWidget : public QWidget
 
     private slots: // Q_SLOTS macro
         void addTask();
-        void removeTask();
 
     private:
-        QPushButton *button_;
+        QPushButton *addButton_;
         QGridLayout *mainLayout_;
-        int taskListCount_;
 };
 
 #endif
