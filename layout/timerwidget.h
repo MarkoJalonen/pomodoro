@@ -5,11 +5,13 @@
 
 #define TIMER_MIN_W 200
 
+class QHBoxLayout;
 class QVBoxLayout;
 class QPushButton;
 class QLCDNumber;
 class QLabel;
 class QTimer;
+class QTime;
 
 class TimerWidget : public QWidget
 {
@@ -21,14 +23,19 @@ class TimerWidget : public QWidget
 
     private slots: // Q_SLOTS macro
         void updateTime();
+        void toggleTimer();
+        void skip();
 
     private:
-        QVBoxLayout *timerLayout_;
-        QPushButton *pausePlayButton_;
-        QPushButton *skipButton_;
+        QHBoxLayout *timerLayout_;
+        QVBoxLayout *controlsLayout_;
+        QPushButton *pausePlayButton_, *skipButton_;
         QLCDNumber *timerReadout_;
         QLabel *timerStatus_;
         QTimer *timer_;
+        QTime *time_;
+        enum State {Paused, Focus, Relax, Timeout};
+        enum State currState_, prevState_;
 };
 
 #endif

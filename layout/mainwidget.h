@@ -7,7 +7,7 @@
 #define MAX_TASK_COUNT 10
 
 class QPushButton;
-class QGridLayout;
+class QVBoxLayout;
 class TimerWidget;
 
 class MainWidget : public QWidget
@@ -23,7 +23,7 @@ class MainWidget : public QWidget
 
     private:
         QPushButton *addButton_;
-        QGridLayout *mainLayout_;
+        QVBoxLayout *mainLayout_;
         TimerWidget *timerWidget_;
 };
 

@@ -8,6 +8,7 @@ TaskWidget::TaskWidget(QWidget *parent) : QWidget(parent)
     textBox_ = new QTextEdit();
     deleteButton_ = new QPushButton(tr("❌"));
 
+    deleteButton_->setFixedSize(20,20);
     taskLayout_->addWidget(textBox_);
     taskLayout_->addWidget(deleteButton_);
     setLayout(taskLayout_);
