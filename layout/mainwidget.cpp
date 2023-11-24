@@ -1,17 +1,19 @@
 #include <QtWidgets>
-#include <stdio.h>
 #include "mainwidget.h"
 #include "taskwidget.h"
+#include "timerwidget.h"
 
 MainWidget::MainWidget(QWidget *parent) : QWidget(parent)
 {
     addButton_ = new QPushButton(tr("Add Task"));
-    mainLayout_ = new QGridLayout;
+    mainLayout_ = new QGridLayout();
+    timerWidget_ = new TimerWidget();
     mainLayout_->addWidget(addButton_,0,0);
+    mainLayout_->addWidget(timerWidget_,0,1);
 
     setLayout(mainLayout_);
-    setWindowTitle(tr("Dynamic Layouts"));
-    setMinimumWidth(MIN_WIDTH);
+    setWindowTitle(tr("Pomodoro"));
+    setMinimumWidth(MAIN_MIN_W);
 
     connect 
     (

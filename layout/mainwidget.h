@@ -3,11 +3,12 @@
 
 #include <QWidget>
 
-#define MIN_WIDTH 400
+#define MAIN_MIN_W 800
 #define MAX_TASK_COUNT 10
 
 class QPushButton;
 class QGridLayout;
+class TimerWidget;
 
 class MainWidget : public QWidget
 {
@@ -23,6 +24,7 @@ class MainWidget : public QWidget
     private:
         QPushButton *addButton_;
         QGridLayout *mainLayout_;
+        TimerWidget *timerWidget_;
 };
 
 #endif
