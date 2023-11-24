@@ -8,5 +8,7 @@ or just use the timer for focus and relaxation periods.
 You may start and stop the countdown with the play/pause button 
 or skip the current countdown with the skip button.
 
+TODO: The longer relaxation period after four intervals is not yet implemented.
+
 QMake version 3.1
 Using Qt version 5.15.3
