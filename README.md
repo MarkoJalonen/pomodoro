@@ -9,6 +9,8 @@ or just use the timer for focus and relaxation periods.
 You may start and stop the countdown with the play/pause button 
 or skip the current countdown with the skip button.
 
+![ScreenShot](/screenshots/main_window.png)
+
 TODO: 
 The longer relaxation period after four intervals is not yet implemented.
 Timer should be run in QThread.
