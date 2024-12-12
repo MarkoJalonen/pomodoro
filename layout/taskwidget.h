@@ -1,5 +1,7 @@
-#ifndef TASKWIDGET_H
-#define TASKWIDGET_H
+// Copyright 2024 Marko Jalonen
+
+#ifndef LAYOUT_TASKWIDGET_H_
+#define LAYOUT_TASKWIDGET_H_
 
 #include <QWidget>
 
@@ -9,22 +11,21 @@ class QHBoxLayout;
 class QPushButton;
 class QTextEdit;
 
-class TaskWidget : public QWidget
-{
-    Q_OBJECT // Q_OBJECT macro
+class TaskWidget : public QWidget {
+Q_OBJECT  // Q_OBJECT macro
 
-    public:
-        explicit TaskWidget(QWidget *parent = 0);
-        ~TaskWidget();
+ public:
+    explicit TaskWidget(QWidget *parent = 0);
+    ~TaskWidget();
 
-    private slots: // Q_SLOTS macro
-        void deleteTask();
+ private slots:  // Q_SLOTS macro
+    void deleteTask();
 
-    private:
-        QHBoxLayout *taskLayout_;
-        QTextEdit *textBox_;
-        QPushButton *deleteButton_;    
-        QWidget *parent_;
+ private:
+    QHBoxLayout *taskLayout_;
+    QTextEdit *textBox_;
+    QPushButton *deleteButton_;
+    QWidget *parent_;
 };
 
-#endif
+#endif  // LAYOUT_TASKWIDGET_H_

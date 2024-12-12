@@ -1,35 +1,32 @@
+// Copyright 2024 Marko Jalonen
+
 #include <QtWidgets>
 #include "taskwidget.h"
 
-TaskWidget::TaskWidget(QWidget *parent) : QWidget(parent)
-{
+TaskWidget::TaskWidget(QWidget *parent) : QWidget(parent) {
     parent_ = parent;
     taskLayout_ = new QHBoxLayout();
     textBox_ = new QTextEdit();
     deleteButton_ = new QPushButton(tr("❌"));
 
-    deleteButton_->setFixedSize(20,20);
+    deleteButton_->setFixedSize(20, 20);
     taskLayout_->addWidget(textBox_);
     taskLayout_->addWidget(deleteButton_);
     setLayout(taskLayout_);
     setMaximumHeight(MAX_TASK_H);
 
-    connect 
-    (
-        deleteButton_, SIGNAL(released()), 
-        this, SLOT(deleteTask())
-    );
+    connect(
+        deleteButton_, SIGNAL(released()),
+        this, SLOT(deleteTask()));
 }
 
-TaskWidget::~TaskWidget()
-{
+TaskWidget::~TaskWidget() {
     delete textBox_;
     delete deleteButton_;
     delete taskLayout_;
 }
 
-void TaskWidget::deleteTask() 
-{
+void TaskWidget::deleteTask() {
     deleteLater();
     parent_->adjustSize();
 }
